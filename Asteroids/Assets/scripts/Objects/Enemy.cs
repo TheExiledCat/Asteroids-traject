@@ -1,23 +1,30 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Object
 {
-  
-    public void Locate(GameObject target)
+    public delegate void Hit();
+    public static event Hit OnHit;
+    
+    public void Locate()
     {
-        if (Random.Range(0, 1)<0.5f)
+        if (Random.Range(0, 1) < 0.5f)
         {
-            transform.position = new Vector3(-90, Random.Range(-60, 60), 1);
-            transform.LookAt(target.transform.position);
-            transform.rotation = new Quaternion(0, 0, transform.rotation.z, transform.rotation.w);
-        }else if(Random.Range(0, 1) < 1f)
-        {
-            transform.position = new Vector3(90, Random.Range(-60, 60), 1);
-            transform.LookAt(target.transform.position);
-            transform.rotation = new Quaternion(0, 0, transform.rotation.z, transform.rotation.w);
-        }
+            transform.position = new Vector3(-85, Random.Range(-60, 60), 1);
 
+        }
+        else if (Random.Range(0, 1) < 1f)
+        {
+            transform.position = new Vector3(85, Random.Range(-60, 60), 1);
+        }
+        
     }
-    
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("bullet"))
+            Debug.Log("score++");
+        //OnHit();
+    }
+
+
+
 }

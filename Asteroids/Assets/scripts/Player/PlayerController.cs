@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Object
 {
     //Variables
+    Rigidbody2D rb;
     public Weapons[] wWeapons;
-    float fMoveSpeed = 30;
-    float fTurnSpeed = 4;
-    Weapons wWeapon;
+    [SerializeField]
+    float fMoveSpeed, fTurnSpeed;
+    [HideInInspector]
+    public Weapons wWeapon;
     float fMoveInX;
     float fMoveInY;
     int iShotBuffer;
     int iSelector = 0;
     public int lives = 3;
+    
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         wWeapon = wWeapons[0];
         Debug.Log(wWeapon.name);
     }
     private void Update()
     {
+        CheckBorder();
         if (iShotBuffer > 0)
         {
             iShotBuffer--;
@@ -35,14 +40,15 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (iSelector < wWeapons.Length-1)
+            if (iSelector < wWeapons.Length - 1)
             {
                 iSelector++;
-            }else if (iSelector == wWeapons.Length-1)
+            }
+            else if (iSelector == wWeapons.Length - 1)
             {
                 iSelector = 0;
             }
-            
+
             wWeapon = wWeapons[iSelector];
             Debug.Log(wWeapon.name);
             Debug.Log(iSelector);
@@ -62,46 +68,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log(wWeapon.name);
             Debug.Log(iSelector);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Movement
-        transform.position += transform.up*fMoveInY*fMoveSpeed*Time.deltaTime ;
+        rb.AddForce(transform.up * fMoveSpeed*fMoveInY);
+        
+            //transform.position += transform.up * fMoveInY * fMoveSpeed * Time.deltaTime;
+            
         transform.Rotate(0, 0, -fMoveInX * fTurnSpeed);
-        if (transform.position.x <= -70)
-        {
-            transform.position = new Vector3(69, transform.position.y, 1);
-        }else if (transform.position.x >= 70)
-        {
-            transform.position = new Vector3(-69, transform.position.y, 1);
-        }
-        if (transform.position.y <= -52)
-        {
-            transform.position = new Vector3(transform.position.x, 51, 1);
-        }
-        else if (transform.position.y >= 52)
-        {
-            transform.position = new Vector3(transform.position.x, -51, 1);
-        }
+        
     }
     void Shoot()//function to shoot bullet type
     {
         if (iShotBuffer == 0)
         {
             Instantiate(wWeapon.bulletType, new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y, 0), transform.rotation);
-            iShotBuffer = 5;
+            if (wWeapon == wWeapons[0])
+            {
+                iShotBuffer = 5;
+            }
+            else if (wWeapon == wWeapons[1])
+            {
+
+                iShotBuffer = 80;
+            }
+
         }
 
-       
+
     }
 }
