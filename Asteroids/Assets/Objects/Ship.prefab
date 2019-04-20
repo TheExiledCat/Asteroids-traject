@@ -42,9 +42,10 @@ GameObject:
   - component: {fileID: 5546209673105787060}
   - component: {fileID: 2567844175531691088}
   - component: {fileID: 41750409}
+  - component: {fileID: 1017622915}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392591b04f93e6d4f8ec566a46d2409a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenTop: 54
+  screenBottom: -54
+  screenLeft: -70
+  screenRight: 70
   wWeapons:
   - name: Normal
     bulletType: {fileID: 8320939391594145500, guid: ef5147f5e6a721145983f784f710c9e9,
@@ -133,6 +138,12 @@ MonoBehaviour:
       type: 3}
   - name: Lazer
     bulletType: {fileID: 0}
+  fMoveSpeed: 10
+  fTurnSpeed: 4
+  wWeapon:
+    name: 
+    bulletType: {fileID: 0}
+  lives: 3
 --- !u!60 &41750409
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -256,3 +267,24 @@ PolygonCollider2D:
       - {x: 0.08, y: 3.33}
       - {x: 0.14999999, y: 3.1999998}
       - {x: 0.28, y: 2.96}
+--- !u!50 &1017622915
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567844175531691087}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
