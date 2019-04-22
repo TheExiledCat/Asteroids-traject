@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : Object
 {
     //Variables
+    SpriteRenderer sr;
     Rigidbody2D rb;
     public Weapons[] wWeapons;
     [SerializeField]
@@ -15,16 +16,23 @@ public class PlayerController : Object
     float fMoveInY;
     int iShotBuffer;
     int iSelector = 0;
-    public int lives = 3;
-    
+    public int lives;
+    bool bIsInvincible = false;
+    public float respawnTime;
+    public Transform barrel;
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         wWeapon = wWeapons[0];
         Debug.Log(wWeapon.name);
     }
     private void Update()
     {
+        if (lives == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         CheckBorder();
         if (iShotBuffer > 0)
         {
@@ -69,18 +77,25 @@ public class PlayerController : Object
             Debug.Log(iSelector);
         }
         //Movement
-        rb.AddForce(transform.up * fMoveSpeed*fMoveInY);
-        
-            //transform.position += transform.up * fMoveInY * fMoveSpeed * Time.deltaTime;
-            
+        rb.AddForce(transform.up * fMoveSpeed * fMoveInY);
+
+        //transform.position += transform.up * fMoveInY * fMoveSpeed * Time.deltaTime;
+
         transform.Rotate(0, 0, -fMoveInX * fTurnSpeed);
-        
+        if (bIsInvincible)
+        {
+            Flicker();
+        }
+        else
+        {
+            sr.enabled = true;
+        }
     }
-    void Shoot()//function to shoot bullet type
+    void Shoot()//function to shoot bullet type where the buffer is the cooldown for every shot in frames
     {
         if (iShotBuffer == 0)
         {
-            Instantiate(wWeapon.bulletType, new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y, 0), transform.rotation);
+            Instantiate(wWeapon.bulletType, new Vector3(barrel.position.x, barrel.position.y, 0), transform.rotation);
             if (wWeapon == wWeapons[0])
             {
                 iShotBuffer = 5;
@@ -89,10 +104,37 @@ public class PlayerController : Object
             {
 
                 iShotBuffer = 80;
+            }else if (wWeapon == wWeapons[2])
+            {
+                iShotBuffer = 100;
             }
 
         }
 
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+            if (!bIsInvincible)
+            {
+                rb.velocity = Vector3.zero;
+                transform.position = Vector3.zero;
+                lives--;
+                bIsInvincible = true;
+                Invoke("Safe", respawnTime);
+            }
+
+        }
+    }
+    void Safe()
+    {
+        bIsInvincible = false;
+    }
+    void Flicker()
+    {
+
+        sr.enabled = !sr.enabled;
     }
 }

@@ -10,6 +10,7 @@ public class AsteroidController : Enemy
     float fMinSpeed, fMaxSpeed;
     public GameObject aSmall, aNormal;
     Rigidbody2D rb;
+    public Manager mg;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +42,10 @@ public class AsteroidController : Enemy
                 Destroy(collision.gameObject);
                 BreakApart();
             }
+            else
+            {
+                BreakApart();
+            }
         }
         if (collision.CompareTag("bomb"))
         {
@@ -60,6 +65,7 @@ public class AsteroidController : Enemy
                 }
             case 1:
                 {
+                    
                     GameObject cluster = Instantiate(aSmall, transform.position, transform.rotation);
                     GameObject cluster1 = Instantiate(aSmall, transform.position, Quaternion.identity);
                     cluster1.transform.Rotate(0, 0, -40f);
@@ -68,6 +74,7 @@ public class AsteroidController : Enemy
                 }
             case 2:
                 {
+                    mg.SpawnAsteroids(1);
                     GameObject cluster = Instantiate(aNormal, transform.position, transform.rotation);
                     GameObject cluster1 = Instantiate(aNormal, transform.position, transform.rotation);
                     cluster1.transform.Rotate(0, 0, -20f);

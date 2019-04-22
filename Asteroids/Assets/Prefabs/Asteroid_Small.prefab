@@ -103,6 +103,7 @@ MonoBehaviour:
   fMaxSpeed: 10
   aSmall: {fileID: 6781305594086990707}
   aNormal: {fileID: 2822744330636247154, guid: 26bd1663f428a224e80feafa2440d0f8, type: 3}
+  mg: {fileID: 3579402558602166246, guid: e750a6d0680ae554195e3759cea85c6b, type: 3}
 --- !u!58 &6781305594086990706
 CircleCollider2D:
   m_ObjectHideFlags: 0

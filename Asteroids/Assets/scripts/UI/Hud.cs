@@ -17,7 +17,7 @@ public class Hud : MonoBehaviour
     {
         for(int i = 0; i < player.GetComponent<PlayerController>().lives; i++)
         {
-            GUI.DrawTexture(new Rect(30*i+10, 40,25,25),t);
+            GUI.DrawTexture(new Rect(Screen.width/20*i+Screen.width/30, Screen.height/10,Screen.width/20,Screen.height/20),t,ScaleMode.ScaleToFit);
         }
     }
     

@@ -8,31 +8,17 @@ public class NormalBulletController : MonoBehaviour
     public int type;
     void Start()
     {
-        
+        Invoke("Destroyer", 3f);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += transform.up * fMoveSpeed * Time.deltaTime;
-        switch (type)//check type kogel
-        {
-            case 0:
-                {
-
-                    break;
-                }
-            case 1:
-                {
-
-                    break;
-                }
-            case 2:
-                {
-
-                    break;
-                }
-        }
-
+       //check type kogel
+    }
+    void Destroyer()
+    {
+        Destroy(gameObject);
     }
 }
