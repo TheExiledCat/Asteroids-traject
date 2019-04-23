@@ -112,12 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &237618959 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1579068449, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7843313336430885508}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426291671
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +435,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3019820219496601427, guid: 2ab162e4b504f734896ee13f4a3a21ce,
+        type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1615125825}
+    - target: {fileID: 3019820219496601427, guid: 2ab162e4b504f734896ee13f4a3a21ce,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 99967a5c4ef972845b7b42fb4109aeab, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab162e4b504f734896ee13f4a3a21ce, type: 3}
 --- !u!1001 &840236793
@@ -510,6 +514,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3019820219496601427, guid: 2ab162e4b504f734896ee13f4a3a21ce,
+        type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1615125825}
+    - target: {fileID: 3019820219496601427, guid: 2ab162e4b504f734896ee13f4a3a21ce,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 99967a5c4ef972845b7b42fb4109aeab, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab162e4b504f734896ee13f4a3a21ce, type: 3}
 --- !u!1 &950829925
@@ -963,6 +977,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537853511}
   m_CullTransparentMesh: 0
+--- !u!82 &1615125825 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1615125825, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7843313336430885508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1657935159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,31 +1358,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2567844175531691088, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
-        type: 3}
-      propertyPath: respawnTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2567844175531691088, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
-        type: 3}
-      propertyPath: lives
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2567844175531691088, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
-        type: 3}
-      propertyPath: wWeapons.Array.data[2].bulletType
-      value: 
-      objectReference: {fileID: 7943337079183027925, guid: 7f2aa111ca11fe6459821c703ba4ae40,
-        type: 3}
-    - target: {fileID: 2567844175531691088, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a,
-        type: 3}
-      propertyPath: barrel
-      value: 
-      objectReference: {fileID: 237618959}
-    - target: {fileID: 41750409, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a, type: 3}

@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ed181f8590e944beaabecc59737ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 1615125825, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a, type: 3}
+  clip: {fileID: 8300000, guid: 99967a5c4ef972845b7b42fb4109aeab, type: 3}
   hitbox: {fileID: 8612389201017628524}
 --- !u!1 &8612389201017628524
 GameObject:

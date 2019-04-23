@@ -8,6 +8,8 @@ public class AsteroidController : Enemy
     public int iFrags;
     [SerializeField]
     float fMinSpeed, fMaxSpeed;
+    public AudioSource source;
+    public AudioClip sound;
     public GameObject aSmall, aNormal;
     Rigidbody2D rb;
     public Manager mg;
@@ -78,6 +80,7 @@ public class AsteroidController : Enemy
                     GameObject cluster = Instantiate(aNormal, transform.position, transform.rotation);
                     GameObject cluster1 = Instantiate(aNormal, transform.position, transform.rotation);
                     cluster1.transform.Rotate(0, 0, -20f);
+                    source.PlayOneShot(sound);
                     Destroy(gameObject);
                     break;
                 }

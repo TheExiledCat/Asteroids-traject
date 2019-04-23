@@ -101,6 +101,8 @@ MonoBehaviour:
   iFrags: 1
   fMinSpeed: 5
   fMaxSpeed: 7
+  source: {fileID: 1615125825, guid: 34d0e3b7a0ecbcd4f84242ec3ea9673a, type: 3}
+  sound: {fileID: 0}
   aSmall: {fileID: 6781305594086990707, guid: 709389c1d25458e419ba77b92dd4a17c, type: 3}
   aNormal: {fileID: 2822744330636247154}
   mg: {fileID: 3579402558602166246, guid: e750a6d0680ae554195e3759cea85c6b, type: 3}

@@ -6,6 +6,9 @@ public class PlayerController : Object
 {
     //Variables
     SpriteRenderer sr;
+    public AudioClip shot;
+    public AudioClip lazer;
+    AudioSource source;
     Rigidbody2D rb;
     public Weapons[] wWeapons;
     [SerializeField]
@@ -22,6 +25,7 @@ public class PlayerController : Object
     public Transform barrel;
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         wWeapon = wWeapons[0];
@@ -99,13 +103,16 @@ public class PlayerController : Object
             if (wWeapon == wWeapons[0])
             {
                 iShotBuffer = 5;
+                source.PlayOneShot(shot);
+
             }
             else if (wWeapon == wWeapons[1])
             {
-
+                source.PlayOneShot(shot);
                 iShotBuffer = 80;
             }else if (wWeapon == wWeapons[2])
             {
+                source.PlayOneShot(lazer);
                 iShotBuffer = 100;
             }
 
