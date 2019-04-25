@@ -81,9 +81,9 @@ public class PlayerController : Object
             Debug.Log(iSelector);
         }
         //Movement
-        rb.AddForce(transform.up * fMoveSpeed * fMoveInY);
+        //rb.AddForce(transform.up * fMoveSpeed * fMoveInY);
 
-        //transform.position += transform.up * fMoveInY * fMoveSpeed * Time.deltaTime;
+        transform.position += transform.up * fMoveInY * fMoveSpeed * Time.deltaTime;
 
         transform.Rotate(0, 0, -fMoveInX * fTurnSpeed);
         if (bIsInvincible)
